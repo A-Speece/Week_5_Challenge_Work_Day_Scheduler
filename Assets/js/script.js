@@ -17,7 +17,7 @@ var fourPmEvent = document.getElementById("4pm-event");
 var fourPmButton = document.getElementById("button-4pm");
 var fivePmEvent = document.getElementById("5pm-event");
 var fivePmButton = document.getElementById("button-5pm");
-var nineAmSavedEvent = " ";
+
 // Variables for Date/Time //
 var datetime = null,
   date = null;
@@ -29,22 +29,59 @@ var datetime_update = function () {
 };
 
 $(document).ready(function () {
+  //saved 9 am event //
+  var nineEvent = JSON.parse(localStorage.getItem("nineAmSavedInput"));
+  nineAmEvent.value = nineEvent;
+
+  //saved 10 am event //
+  var tenEvent = JSON.parse(localStorage.getItem("tenAmSavedInput"));
+  tenAmEvent.value = tenEvent;
+
+  //saved 11 am event //
+  var elevenEvent = JSON.parse(localStorage.getItem("elevenAmSavedInput"));
+  elevenAmEvent.value = elevenEvent;
+
+  //saved 12 pm event //
+  var twelveEvent = JSON.parse(localStorage.getItem("twelvePmSavedInput"));
+  twelvePmEvent.value = twelveEvent;
+
+  //saved 1 pm event //
+  var oneEvent = JSON.parse(localStorage.getItem("onePmSavedInput"));
+  onePmEvent.value = oneEvent;
+
+  //saved 2 pm event //
+  var twoEvent = JSON.parse(localStorage.getItem("twoPmSavedInput"));
+  twoPmEvent.value = twoEvent;
+
+  //saved 3 pm event //
+  var threeEvent = JSON.parse(localStorage.getItem("threePmSavedInput"));
+  threePmEvent.value = threeEvent;
+
+  //saved 4 pm event //
+  var fourEvent = JSON.parse(localStorage.getItem("fourPmSavedInput"));
+  fourPmEvent.value = fourEvent;
+
+  //saved 5 pm event //
+  var fiveEvent = JSON.parse(localStorage.getItem("fivePmSavedInput"));
+  fivePmEvent.value = fiveEvent;
+
   datetime = $("#currentDay");
   datetime_update();
   setInterval(datetime_update, 1000);
 });
 
 // save each time slot into the local storage when the save button is clicked//
+// 9 am //
 nineAmButton.addEventListener("click", function () {
   var nineAmSavedInput = nineAmEvent.value;
   localStorage.setItem("nineAmSavedInput", JSON.stringify(nineAmSavedInput));
 });
-
+// 10 am //
 tenAmButton.addEventListener("click", function () {
   var tenAmSavedInput = tenAmEvent.value;
   localStorage.setItem("tenAmSavedInput", JSON.stringify(tenAmSavedInput));
 });
-
+// 11 am //
 elevenAmButton.addEventListener("click", function () {
   var elevenAmSavedInput = elevenAmEvent.value;
   localStorage.setItem(
@@ -52,7 +89,7 @@ elevenAmButton.addEventListener("click", function () {
     JSON.stringify(elevenAmSavedInput)
   );
 });
-
+// 12 pm //
 twelvePmButton.addEventListener("click", function () {
   var twelvePmSavedInput = twelvePmEvent.value;
   localStorage.setItem(
@@ -60,33 +97,28 @@ twelvePmButton.addEventListener("click", function () {
     JSON.stringify(twelvePmSavedInput)
   );
 });
-
+// 1 pm //
 onePmButton.addEventListener("click", function () {
   var onePmSavedInput = onePmEvent.value;
   localStorage.setItem("onePmSavedInput", JSON.stringify(onePmSavedInput));
 });
-
+// 2 pm //
 twoPmButton.addEventListener("click", function () {
   var twoPmSavedInput = twoPmEvent.value;
   localStorage.setItem("twoPmSavedInput", JSON.stringify(twoPmSavedInput));
 });
-
+// 3 pm //
 threePmButton.addEventListener("click", function () {
   var threePmSavedInput = threePmEvent.value;
   localStorage.setItem("threePmSavedInput", JSON.stringify(threePmSavedInput));
 });
-
+// 4 pm //
 fourPmButton.addEventListener("click", function () {
   var fourPmSavedInput = fourPmEvent.value;
   localStorage.setItem("fourPmSavedInput", JSON.stringify(fourPmSavedInput));
 });
-
+// 5 pm //
 fivePmButton.addEventListener("click", function () {
   var fivePmSavedInput = fivePmEvent.value;
   localStorage.setItem("fivePmSavedInput", JSON.stringify(fivePmSavedInput));
-});
-
-//when window is refresh. keep saved event input//
-window.addEventListener("load", (event) => {
-  console.log(nineAmSavedEvent);
 });
