@@ -21,54 +21,64 @@ var fivePmButton = document.getElementById("button-5pm");
 // Variables for Date/Time //
 var datetime = null,
   date = null;
+var currentHour = null;
 
 //Function to setup the date and time //
 var datetime_update = function () {
   date = moment(new Date());
+
   datetime.html(date.format(" dddd  Do MMMM YYYY [at] hh:mm:ss"));
 };
 
 $(document).ready(function () {
+  currentHour = parseInt(moment(new Date()).format("H"));
+  console.log(currentHour);
+
   //saved 9 am event //
-  var nineEvent = JSON.parse(localStorage.getItem("nineAmSavedInput"));
-  nineAmEvent.value = nineEvent;
+  loadTimeBlock("nineAmSavedInput", nineAmEvent, 9);
 
   //saved 10 am event //
-  var tenEvent = JSON.parse(localStorage.getItem("tenAmSavedInput"));
-  tenAmEvent.value = tenEvent;
+  loadTimeBlock("tenAmSavedInput", tenAmEvent, 10);
 
   //saved 11 am event //
-  var elevenEvent = JSON.parse(localStorage.getItem("elevenAmSavedInput"));
-  elevenAmEvent.value = elevenEvent;
+  loadTimeBlock("elevenAmSavedInput", elevenAmEvent, 11);
 
   //saved 12 pm event //
-  var twelveEvent = JSON.parse(localStorage.getItem("twelvePmSavedInput"));
-  twelvePmEvent.value = twelveEvent;
+  loadTimeBlock("twelvePmSavedInput", twelvePmEvent, 12);
 
   //saved 1 pm event //
-  var oneEvent = JSON.parse(localStorage.getItem("onePmSavedInput"));
-  onePmEvent.value = oneEvent;
+  loadTimeBlock("onePmSavedInput", onePmEvent, 13);
 
   //saved 2 pm event //
-  var twoEvent = JSON.parse(localStorage.getItem("twoPmSavedInput"));
-  twoPmEvent.value = twoEvent;
+  loadTimeBlock("twoPmSavedInput", twoPmEvent, 14);
 
   //saved 3 pm event //
-  var threeEvent = JSON.parse(localStorage.getItem("threePmSavedInput"));
-  threePmEvent.value = threeEvent;
+  loadTimeBlock("threePmSavedInput", threePmEvent, 15);
 
   //saved 4 pm event //
-  var fourEvent = JSON.parse(localStorage.getItem("fourPmSavedInput"));
-  fourPmEvent.value = fourEvent;
+  loadTimeBlock("fourPmSavedInput", fourPmEvent, 16);
 
   //saved 5 pm event //
-  var fiveEvent = JSON.parse(localStorage.getItem("fivePmSavedInput"));
-  fivePmEvent.value = fiveEvent;
+
+  loadTimeBlock("fivePmSavedInput", fivePmEvent, 17);
 
   datetime = $("#currentDay");
   datetime_update();
   setInterval(datetime_update, 1000);
 });
+
+function loadTimeBlock(inputKey, textArea, time) {
+  var Event = JSON.parse(localStorage.getItem(inputKey));
+  textArea.value = Event;
+
+  if (currentHour > time) {
+    $(textArea).addClass("past");
+  } else if (currentHour === time) {
+    $(textArea).addClass("present");
+  } else if (currentHour < time) {
+    $(textArea).addClass("future");
+  }
+}
 
 // save each time slot into the local storage when the save button is clicked//
 // 9 am //
