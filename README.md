@@ -17,6 +17,6 @@ SO THAT I can manage my time effectively
 
 ## Screenshot
 
-![ScreenShot1.png](./assets/images/ScreenShot1.png)
+![ScreenShot1.png](./Assets/Images/ScreenShot1.png)
 
-![ScreenShot2.png](./assets/images/Screenshot2.png)
+![ScreenShot2.png](./Assets/Images/Screenshot2.png)
