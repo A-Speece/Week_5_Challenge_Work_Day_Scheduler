@@ -1,4 +1,4 @@
-# Week 5 Challenge - Work Dayt Scheduler
+# Week 5 Challenge - Work Day Scheduler
 
 ## Description
 
